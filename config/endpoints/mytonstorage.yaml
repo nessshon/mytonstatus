@@ -13,6 +13,8 @@ endpoints:
   - name: backend
     group: My TON Storage
     url: "https://mytonstorage.org/api/v1/ton-proof"
+    client:
+      timeout: 30s
     interval: 60s
     conditions:
       - "[STATUS] == 200"

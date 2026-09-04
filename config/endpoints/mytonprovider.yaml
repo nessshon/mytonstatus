@@ -17,6 +17,8 @@ endpoints:
     headers:
       Content-Type: application/json
     body: "{}"
+    client:
+      timeout: 30s
     interval: 60s
     conditions:
       - "[STATUS] == 200"
