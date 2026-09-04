@@ -1,0 +1,7 @@
+.env
+.idea/
+.venv/
+.sources/
+.claude/
+data/
+CLAUDE.md

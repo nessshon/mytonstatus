@@ -1,0 +1,16 @@
+external-endpoints:
+  - name: bagidreport-bot
+    group: Telegram Bots
+    token: "${BAGIDREPORT_BOT_HEARTBEAT_TOKEN}"
+    heartbeat:
+      interval: 5m
+    alerts:
+      - type: telegram
+
+  - name: mytonctrl-bot
+    group: Telegram Bots
+    token: "${MYTONCTRL_BOT_HEARTBEAT_TOKEN}"
+    heartbeat:
+      interval: 5m
+    alerts:
+      - type: telegram

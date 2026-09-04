@@ -1,0 +1,23 @@
+name: mytonstatus
+
+services:
+  gatus:
+    image: ghcr.io/nessshon/gatus:5.36.0-1
+    container_name: gatus
+    restart: unless-stopped
+    ports:
+      - "${GATUS_PORT:-8080}:8080"
+    environment:
+      GATUS_CONFIG_PATH: /config
+      GATUS_UI_ASSETS_PATH: /assets
+    env_file:
+      - .env
+    volumes:
+      - ./data:/data
+      - ./config:/config
+      - ./assets:/assets
+    logging:
+      driver: json-file
+      options:
+        max-size: "10m"
+        max-file: "3"

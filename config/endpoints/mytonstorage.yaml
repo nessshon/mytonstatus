@@ -1,0 +1,21 @@
+endpoints:
+  - name: frontend
+    group: My TON Storage
+    url: "https://mytonstorage.org"
+    interval: 60s
+    conditions:
+      - "[STATUS] == 200"
+      - "[BODY] == pat(*<title>My TON Storage</title>*)"
+      - "[CERTIFICATE_EXPIRATION] > 168h"
+    alerts:
+      - type: telegram
+
+  - name: backend
+    group: My TON Storage
+    url: "https://mytonstorage.org/api/v1/ton-proof"
+    interval: 60s
+    conditions:
+      - "[STATUS] == 200"
+      - "[BODY].data == pat(auth:mytonstorage*)"
+    alerts:
+      - type: telegram

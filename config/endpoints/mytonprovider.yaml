@@ -1,0 +1,25 @@
+endpoints:
+  - name: frontend
+    group: My TON Provider
+    url: "https://mytonprovider.org"
+    interval: 60s
+    conditions:
+      - "[STATUS] == 200"
+      - "[BODY] == pat(*<title>TON Provider Explorer</title>*)"
+      - "[CERTIFICATE_EXPIRATION] > 168h"
+    alerts:
+      - type: telegram
+
+  - name: backend
+    group: My TON Provider
+    url: "https://mytonprovider.org/api/v1/providers/search"
+    method: POST
+    headers:
+      Content-Type: application/json
+    body: "{}"
+    interval: 60s
+    conditions:
+      - "[STATUS] == 200"
+      - "len([BODY].providers) > 0"
+    alerts:
+      - type: telegram

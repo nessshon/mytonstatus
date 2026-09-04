@@ -1,0 +1,9 @@
+alerting:
+  telegram:
+    token: "${TELEGRAM_ALERT_BOT_TOKEN}"
+    id: "${TELEGRAM_ALERT_CHAT_ID}"
+    custom-emoji: true
+    default-alert:
+      send-on-resolved: true
+      failure-threshold: 3
+      success-threshold: 2
