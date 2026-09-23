@@ -1,0 +1,13 @@
+endpoints:
+  - name: mytonprovider-miniapp
+    group: Telegram Mini Apps
+    url: "https://mtp.ness.uz/health"
+    interval: 60s
+    conditions:
+      - "[STATUS] == 200"
+      - "[BODY].status == ok"
+      - "[BODY].checks.database.status == ok"
+      - "[BODY].checks.workers.status == ok"
+      - "[CERTIFICATE_EXPIRATION] > 168h"
+    alerts:
+      - type: telegram
