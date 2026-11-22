@@ -1,0 +1,37 @@
+endpoints:
+  - name: toncenter-v2
+    group: TON Services
+    url: "https://toncenter.com/api/v2/getMasterchainInfo"
+    interval: 60s
+    conditions:
+      - "[STATUS] == 200"
+      - "[BODY].ok == true"
+      - "[BODY].result.last.seqno > 0"
+      - "[CERTIFICATE_EXPIRATION] > 168h"
+    alerts:
+      - type: telegram
+        failure-threshold: 6
+
+  - name: toncenter-v3
+    group: TON Services
+    url: "https://toncenter.com/api/v3/masterchainInfo"
+    interval: 60s
+    conditions:
+      - "[STATUS] == 200"
+      - "[BODY].last.seqno > 0"
+      - "[CERTIFICATE_EXPIRATION] > 168h"
+    alerts:
+      - type: telegram
+        failure-threshold: 6
+
+  - name: archival-dump
+    group: TON Services
+    url: "https://archival-dump.ton.org/index/mainnet.json"
+    interval: 5m
+    conditions:
+      - "[STATUS] == 200"
+      - "len([BODY].blocks) > 0"
+      - "len([BODY].states) > 0"
+      - "[CERTIFICATE_EXPIRATION] > 168h"
+    alerts:
+      - type: telegram
