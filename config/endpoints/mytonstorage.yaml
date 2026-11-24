@@ -21,3 +21,39 @@ endpoints:
       - "[BODY].data == pat(auth:mytonstorage*)"
     alerts:
       - type: telegram
+
+  - name: gateway
+    group: My TON Storage
+    url: "https://mytonstorage.org/api/v1/gateway/zz"
+    interval: 60s
+    conditions:
+      - "[STATUS] == 400"
+      - "[BODY].error == invalid bagid"
+    alerts:
+      - type: telegram
+
+  - name: backend-storage
+    group: My TON Storage
+    url: "ton-storage://4ac37109d9120f58c4c112ddbf13356defd961e4aaa8bd2603fbb1082e9acd26"
+    interval: 60s
+    client:
+      timeout: 40s
+    conditions:
+      - "[BODY].state == ok"
+      - "[RESPONSE_TIME] < 1500"
+    alerts:
+      - type: telegram
+        failure-threshold: 6
+
+  - name: gateway-storage
+    group: My TON Storage
+    url: "ton-storage://ad5de1fc39addcb8b3e04cac1d371bbce8ad1cc76234fce9d8d43e9bb1730a91"
+    interval: 60s
+    client:
+      timeout: 40s
+    conditions:
+      - "[BODY].state == ok"
+      - "[RESPONSE_TIME] < 1500"
+    alerts:
+      - type: telegram
+        failure-threshold: 6
