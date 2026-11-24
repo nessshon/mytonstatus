@@ -1,7 +1,7 @@
 # 📊 My TON Status
 
 [![TON](https://img.shields.io/badge/TON-grey?logo=TON&logoColor=40AEF0)](https://ton.org)
-[![Gatus](https://img.shields.io/badge/Gatus-v5.36.0-blue)](https://github.com/TwiN/gatus)
+[![Gatus](https://img.shields.io/badge/Gatus-v5.38.0-blue)](https://github.com/TwiN/gatus)
 
 Self-hosted [Gatus](https://github.com/TwiN/gatus) uptime dashboard for TON
 services — frontends, backends and APIs — with Telegram alerts on incidents.
