@@ -1,0 +1,25 @@
+endpoints:
+  - name: index
+    group: Archival Dump
+    url: "https://archival-dump.ton.org/index/mainnet.json"
+    interval: 5m
+    conditions:
+      - "[STATUS] == 200"
+      - "len([BODY].blocks) > 0"
+      - "len([BODY].states) > 0"
+      - "[CERTIFICATE_EXPIRATION] > 168h"
+    alerts:
+      - type: telegram
+
+  - name: storage
+    group: Archival Dump
+    url: "ton-storage://2665b8fd871af3c2d4e5e38ff7e5c64e1db632854b902125b6acdb4dc8db0f8a"
+    interval: 60s
+    client:
+      timeout: 40s
+    conditions:
+      - "[BODY].state == ok"
+      - "[RESPONSE_TIME] < 1500"
+    alerts:
+      - type: telegram
+        failure-threshold: 6
