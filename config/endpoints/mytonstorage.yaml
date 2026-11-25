@@ -13,11 +13,11 @@ endpoints:
 
   - name: gateway
     group: My TON Storage
-    url: "https://mytonstorage.org/api/v1/gateway/zz"
+    url: "https://mytonstorage.org/api/v1/gateway/789BF4014D7566F5BFA9173B89009C9CA7C705D238598A509AF440BB60DA2EBE"
     interval: 60s
     conditions:
-      - "[STATUS] == 400"
-      - "[BODY].error == invalid bagid"
+      - "[STATUS] == 200"
+      - "[BODY] == pat(*Files Count:</strong> 1*)"
     alerts:
       - type: telegram
 
