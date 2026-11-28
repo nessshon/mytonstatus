@@ -23,3 +23,15 @@ endpoints:
     alerts:
       - type: telegram
         failure-threshold: 6
+
+  - name: storer-balance
+    group: Archival Dump
+    url: "https://toncenter.com/api/v2/getAddressBalance?address=${ARCHIVAL_STORER_WALLET}"
+    interval: 10m
+    conditions:
+      - "[STATUS] == 200"
+      # toncenter returns nanotons: 100 TON
+      - "[BODY].result >= 100000000000"
+    alerts:
+      - type: telegram
+        minimum-reminder-interval: 6h

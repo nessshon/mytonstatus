@@ -62,6 +62,7 @@ Copy `.env.example` → `.env` and fill in (`.env` is gitignored — never commi
 | Variable | Description |
 |----------|-------------|
 | `GATUS_PORT` | Host port for the dashboard (default `8080`) |
+| `ARCHIVAL_STORER_WALLET` | archive-provider-storer wallet address for the balance check |
 | `TELEGRAM_ALERT_BOT_TOKEN` | Bot token from @BotFather — sends the alerts |
 | `TELEGRAM_ALERT_CHAT_ID` | Chat id(s) to notify, comma-separated for several |
 | `<BOT>_HEARTBEAT_TOKEN` | Per-bot shared secret; must match the bot's external-endpoint token |
